@@ -1,27 +1,22 @@
-use context essentials2020
+use context essentials2020 # Don't delete this line when using Pyret on Exercism 
 
 provide: abbreviate end
 
-
-fun abbreviate(phrase :: String) -> String:
+fun abbreviate(phrase):
   string-split-all(phrase, " ").foldl(
-    lam(word, abbreviation):
-      cleaned = string-replace(word, "_", "")
-      tokens = string-split-all(cleaned, "-")
-      
-      abbreviated = tokens.foldl(
-        lam(token, acc):
+    lam(section, abbreviation):
+      cleaned = string-replace(section, "_", "")
+      fragments = string-split-all(cleaned, "-")
+      abbreviation + fragments.foldl(
+        lam(fragment, acc):
             ask:
-            | token <> "" then:
-              first = string-char-at(token, 0)
-              acc + string-to-upper(first)
+            | fragment <> "" then:
+              acc + string-to-upper(string-char-at(fragment, 0))
             | otherwise:
               acc
             end
         end,
         "")
-      
-      abbreviation + abbreviated
     end,
     "")
 end
