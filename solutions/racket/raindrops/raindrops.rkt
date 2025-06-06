@@ -1,21 +1,22 @@
 #lang racket
 
-(provide convert)
+(require math/number-theory)
 
-(define translation-rules
+(define _rules
   '((3    . "Pling")
     (5    . "Plang")
     (7    . "Plong")))
 
-(define/contract (convert number)
-  (-> number? string?)
+(define (convert number)
   "Convert a number to a string based on potential factors"
-  (define (divisible? factor)
-    (zero? (modulo number factor)))
-  (define result
-    (filter-map (λ (rule) (and (divisible? (car rule))
-                               (cdr rule)))
-                translation-rules))
-  (if (not (empty? result))
-      (string-join result "")
-      (number->string number)))
+  (let ([result
+          (for/list ([rule (in-list _rules)]
+                     #:when (divides? (car rule) number))
+            (cdr rule))])
+    (if (not (empty? result))
+        (string-join result "")
+        (number->string number))))
+
+(provide
+  (contract-out
+    [convert (-> number? string?)]))
