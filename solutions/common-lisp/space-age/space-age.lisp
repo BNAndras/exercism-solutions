@@ -8,7 +8,7 @@
   "Bumber of Earth seconds in a single orbital period")
 
 (defparameter orbital-ratios
-  (make-hash-table :test 'equal)
+  (make-hash-table)
   "Lookup table of orbital ratios relative to Earth")
 
 (setf (gethash "Mercury" orbital-ratios) 0.2408467)
