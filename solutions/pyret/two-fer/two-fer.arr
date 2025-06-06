@@ -1,12 +1,10 @@
-use context essentials2020
-
 provide: two-fer end
 
 fun two-fer(name :: String) -> String:
   new-name = ask:
     | name == "" then:
       "you"
-    | otherwise: 
+    | otherwise:
       name
   end
   
