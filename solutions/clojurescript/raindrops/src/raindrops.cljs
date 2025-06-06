@@ -15,7 +15,6 @@
   [n]
   "Return string of sounds representing a number's factors or the digits if not divisible by 3, 5, or 7"
   (let [sounds (reduce #(str %1 (get-sound n %2)) "" rules)]
-    (if (empty? sounds)
-      (str n)
-      (apply str sounds))))
-  
+    (if-not (empty? sounds)
+      sounds
+      (str n))))
