@@ -6,5 +6,5 @@
   "Checks if a word has no repeating letters." 
   (->> word
       (lower-case)
-       (remove #{\ \-})
-       (apply distinct?)))
+      (remove #{\space\-})
+      (apply distinct?)))
