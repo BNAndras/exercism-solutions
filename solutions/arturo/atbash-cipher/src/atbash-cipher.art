@@ -1,0 +1,52 @@
+encode: function[phrase][
+    count: 0
+    result: ""
+
+    loop phrase 'chr [
+        if equal? chr ' ' -> continue
+        if punctuation? chr -> continue
+
+
+        if equal? count 5 [
+            result: append result ' '
+            count: 0
+        ]
+
+        chr: switch letter? chr -> to :char sub add to :integer 'a' to :integer 'z' to :integer lower chr
+                                -> chr
+
+        result: append result chr
+        count: count + 1
+    ]
+
+
+    result
+]
+
+decode: function[phrase][
+    result: ""
+    loop phrase 'chr [
+        if equal? chr ' ' -> continue
+
+
+        chr: switch letter? chr -> to :char sub add to :integer 'a' to :integer 'z' to :integer lower chr
+                                -> chr
+        result: append result chr
+    ]
+
+    result
+]
+
+
+letter?: function [chr][
+    in? chr alphabet.lower.upper'en
+]
+
+punctuation?: function [chr][
+    any? @[
+        in? chr '!' .. '/'
+        in? chr ':' .. '@'
+        in? chr '[' .. '`'
+        in? chr '{' .. '~'
+    ]
+]
