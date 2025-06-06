@@ -12,4 +12,4 @@ findAnagrams: function[subject candidates][
             -> anagrams: append anagrams candidate
     ]
     anagrams
-]
+] 
