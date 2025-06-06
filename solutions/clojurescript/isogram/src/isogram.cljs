@@ -5,5 +5,7 @@
 (defn isogram?
   [word]
   "Checks if a word has no repeating letters."
-  (let [cleaned (str/lower-case (str/replace word #"(?u)[^\p{Letter}]" ""))]
-  (= (count cleaned) (count (distinct cleaned)))))
+  (let [cleaned (->> word
+                    (str/lower-case)
+                    (filter #(re-find #"(?u)[\p{Letter}]" %)))]
+  (= (distinct cleaned) cleaned)))
