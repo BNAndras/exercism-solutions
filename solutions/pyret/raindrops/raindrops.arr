@@ -1,13 +1,15 @@
 provide: convert end
 
-RULES = [list: {3;"Pling"}, {5;"Plang"}, {7;"Plong"}]
+data Rule: rule(factor, sound) end
+
+RULES = [list: rule(3, "Pling"), rule(5, "Plang"), rule(7, "Plong")]
 
 fun convert(n :: NumInteger) -> String:
   sounds = RULES.foldl(
     lam(elt, acc):
       sound = 
-        if num-modulo(n, elt.{0}) == 0:
-          elt.{1}
+        if num-modulo(n, elt.factor) == 0:
+          elt.sound
         else:
           ""
       end
