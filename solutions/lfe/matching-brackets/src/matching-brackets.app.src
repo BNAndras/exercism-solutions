@@ -1,0 +1,11 @@
+%% -*- erlang -*-
+{application, 'matching-brackets',
+ [{description, "exercism.org - matching brackets"},
+  {vsn, "0.0.1"},
+  {modules,
+   ['matching-brackets']},
+  {registered, []},
+  {applications,
+   [kernel, stdlib]},
+  {included_applications, []},
+  {env, []}]}.
