@@ -6,36 +6,39 @@ module Raindrops exposing (raindrops)
 raindrops : Int -> String
 raindrops number =
     let
-        dropSounds =
-            [ getDropSound "Pling" 3
-            , getDropSound "Plang" 5
-            , getDropSound "Plong" 7
+        sections =
+            [ getFactorWord 3 number "Pling"
+            , getFactorWord 5 number "Plang"
+            , getFactorWord 7 number "Plong"
             ]
-    in
-    dropSounds
-        |> List.map ((|>) number)
-        |> String.concat
-        |> (\sounds ->
-                if String.isEmpty sounds then
-                    String.fromInt number
 
-                else
-                    sounds
-           )
+        response =
+            String.concat sections
+    in
+    if response /= "" then
+        response
+
+    else
+        String.fromInt number
 
 
 
 {- Returns passed word if n1 is a factor of n2, otherwise returning an empty string -}
 
 
-getDropSound : String -> Int -> Int -> String
-getDropSound word n1 n2 =
-    let
-        isFactor =
-            modBy n1 n2 == 0
-    in
-    if isFactor then
+getFactorWord : Int -> Int -> String -> String
+getFactorWord n1 n2 word =
+    if isFactorOf n1 n2 then
         word
 
     else
         ""
+
+
+
+{- Returns True if n1 is a factor of n2 -}
+
+
+isFactorOf : Int -> Int -> Bool
+isFactorOf n1 n2 =
+    modBy n1 n2 == 0
