@@ -1,6 +1,6 @@
 (ns raindrops)
 
-(def rules
+(def ^:private rules
   "Rules consisting of a factor and a representative sound string"
   `[[3 "Pling"] [5 "Plang"] [7 "Plong"]])
 
