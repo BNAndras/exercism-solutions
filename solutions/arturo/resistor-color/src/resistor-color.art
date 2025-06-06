@@ -1,0 +1,16 @@
+colors: [
+    "black"
+    "brown"
+    "red"
+    "orange"
+    "yellow"
+    "green"
+    "blue"
+    "violet"
+    "grey"
+    "white"
+]
+
+colorCode: function [color][
+    index colors color
+]
