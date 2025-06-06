@@ -1,0 +1,7 @@
+reverseString: function [string][
+    if empty? string -> return ""
+
+    fold.seed:"" string [acc chr] [
+        chr ++ acc
+    ]
+]
