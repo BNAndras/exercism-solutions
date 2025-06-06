@@ -20,7 +20,6 @@ fun color-code(colors :: List<String>) -> NumInteger:
   (tens * 10) + ones
 end
 
-
 fun unsafe-index-of(l :: List<Any>, elem :: Any) -> NumInteger:
   cases (List) l:
     | empty => 0
