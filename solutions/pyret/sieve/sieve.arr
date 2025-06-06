@@ -10,7 +10,7 @@ fun primes(limit) block:
     when marks.get-now(i) block:
       ps := ps.push(i)
       mark-multiples(marks, i, limit)
-    end
+    end 
   end
 
   ps.reverse()
