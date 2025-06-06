@@ -1,9 +1,10 @@
-(ns isogram)
+(ns isogram
+  (:require [clojure.string :refer [lower-case]]))
 
 (defn isogram? 
   [word]
   "Checks if a word has no repeating letters." 
   (->> word
-      (.toLowerCase)
-      (remove #(re-find #"(?u)[^\p{Letter}]" %))
-      (apply distinct?)))
+      (lower-case)
+       (remove #{\ \-})
+       (apply distinct?)))
