@@ -18,7 +18,7 @@
 
 (defn n-days-count [birds n]
   "Return total birds seen in the first n days from the beginning of the week"
-  (reduce + (subvec birds 0 n)))
+  (reduce + (take n birds)))
 
 (defn busy-day? [day-count]
   "Check if a day was a busy one for bird-watching"
