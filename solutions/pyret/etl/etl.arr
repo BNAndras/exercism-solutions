@@ -1,8 +1,8 @@
-provide: translate end
+provide: my-translate end
 
 include string-dict
 
-fun translate(legacy :: StringDict<List<String>>) -> StringDict<String>:
+fun my-translate(legacy :: StringDict<List<String>>) -> StringDict<String>:
   legacy.keys().to-list().foldl(
     lam(score, acc):
       legacy.get-value(score).foldl(
