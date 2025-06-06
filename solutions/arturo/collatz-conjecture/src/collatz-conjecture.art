@@ -1,0 +1,9 @@
+collatz: function [n][
+    if n < 1 -> return null
+
+     when [
+        one? n -> 0
+        even? n -> 1 + collatz n / 2
+        odd? n -> 1 + collatz (3 * n) + 1
+    ]
+]
