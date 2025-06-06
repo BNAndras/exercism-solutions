@@ -1,0 +1,12 @@
+toRna: function [dnaStrand][
+    if empty? dnaStrand -> return ""
+    fold.seed:"" dnaStrand [acc char] [
+        acc ++ case char [
+            'G' -> 'C'
+            'C' -> 'G'
+            'T' -> 'A'
+            'A' -> 'U'
+            any -> ""
+        ]
+    ]
+]
