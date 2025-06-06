@@ -1,6 +1,6 @@
 module Pangram exposing (isPangram)
 
-import Set exposing (size)
+import Set
 
 
 isPangram : String -> Bool
@@ -9,4 +9,5 @@ isPangram sentence =
         |> List.filter Char.isAlpha
         |> List.map Char.toLower
         |> Set.fromList
-        |> (\s -> size s == 26)
+        |> Set.size
+        |> (==) 26
