@@ -1,48 +1,32 @@
 (defpackage :space-age
-  (:use :cl)
-  (:export :on-mercury
-           :on-venus
-           :on-earth
-           :on-mars
-           :on-jupiter
-           :on-saturn
-           :on-uranus
-           :on-neptune))
+  (:use :cl))
 
 (in-package :space-age)
 
-(defconstant *seconds-in-orbital*
+(defconstant seconds-in-orbital
   31557600
-  "number of Earth seconds in an one full Earth orbital period")
+  "Bumber of Earth seconds in a single orbital period")
 
-(defun on-earth (earth-seconds)
-  "Local age on Earth and the base implementation for on-planet"
-  (/ earth-seconds *seconds-in-orbital*))
+(defparameter orbital-ratios
+  (make-hash-table :test 'equal)
+  "Lookup table of orbital ratios relative to Earth")
 
-(defun on-mercury (earth-seconds)
-  "Given seconds on Earth, the local age on Mercury"
-  (/ (on-earth earth-seconds) 0.2408467))
+(setf (gethash "Mercury" orbital-ratios) 0.2408467)
+(setf (gethash "Venus" orbital-ratios)   0.61519726)
+(setf (gethash "Earth" orbital-ratios)   1)
+(setf (gethash "Mars" orbital-ratios)    1.8808158)
+(setf (gethash "Jupiter" orbital-ratios) 11.862615)
+(setf (gethash "Saturn" orbital-ratios)  29.447498)
+(setf (gethash "Uranus" orbital-ratios)  84.016846)
+(setf (gethash "Neptune" orbital-ratios) 164.79132)
 
-(defun on-venus (earth-seconds)
-  "Given seconds on Earth, the local age on Venus"
-  (/ (on-earth earth-seconds) 0.61519726))
-
-(defun on-mars (earth-seconds)
-  "Given seconds on Earth, the local age on Mars"
-  (/ (on-earth earth-seconds) 1.8808158))
-
-(defun on-jupiter (earth-seconds)
-  "Given seconds on Earth, the local age on Jupiter"
-  (/ (on-earth earth-seconds) 11.862615))          
-
-(defun on-saturn (earth-seconds)
-  "Given seconds on Earth, the local age on Saturn"
-  (/ (on-earth earth-seconds) 29.447498))
-
-(defun on-uranus (earth-seconds)
-  "Given seconds on Earth, the local age on Uranus"
-  (/ (on-earth earth-seconds) 84.016846))
-
-(defun on-neptune (earth-seconds)
-  "Given seconds on Earth, the local age on Neptune"
-  (/ (on-earth earth-seconds) 164.79132))
+(maphash (lambda (planet ratio)
+                 (let ((label (intern (concatenate 'string "ON-" (string-upcase planet)))))
+                   (progn
+                     (setf (symbol-function label)
+                           (lambda (earth-seconds)
+                             (/ earth-seconds (* seconds-in-orbital ratio))))
+                     (setf (documentation label 'function)
+                           (format nil "Given seconds on Earth, the local age on ~a." planet))
+                    (export label))))
+         orbital-ratios)
