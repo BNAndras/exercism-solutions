@@ -1,5 +1,3 @@
-use context essentials2020
-
 provide: translate end
 
 include string-dict
