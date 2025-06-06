@@ -1,21 +1,20 @@
 const EARTH_ORBITAL_LENGTH = 31_557_600;
 
-type Planet = keyof typeof OrbitalPeriodRatios
+type Planet = keyof typeof OrbitalRatios
 
-enum OrbitalPeriodRatios {
-  mercury = 0.2408467 * EARTH_ORBITAL_LENGTH,
-  venus = 0.61519726 * EARTH_ORBITAL_LENGTH,
-  earth = 1.0 * EARTH_ORBITAL_LENGTH,
-  mars = 1.8808158 * EARTH_ORBITAL_LENGTH,
-  jupiter = 11.862615 * EARTH_ORBITAL_LENGTH,
-  saturn = 29.447498 * EARTH_ORBITAL_LENGTH,
-  uranus = 84.016846 * EARTH_ORBITAL_LENGTH,
-  neptune = 164.79132 * EARTH_ORBITAL_LENGTH,
+enum OrbitalRatios {
+  mercury = 0.2408467,
+  venus = 0.61519726,
+  earth = 1.0,
+  mars = 1.8808158,
+  jupiter = 11.862615,
+  saturn = 29.447498,
+  uranus = 84.016846,
+  neptune = 164.79132,
 }
 
 export function age(planet: Planet, seconds: number): number {
-  const localOrbitalInSeconds = OrbitalPeriodRatios[planet]
-  const localAge = seconds / localOrbitalInSeconds
-
-  return +localAge.toFixed(2);
+  const localOrbitalLength = OrbitalRatios[planet] * EARTH_ORBITAL_LENGTH
+  const localAge = seconds / localOrbitalLength
+  return Number(localAge.toFixed(2));
 }
