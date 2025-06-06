@@ -3,8 +3,13 @@
 (define (square n)
   ;; square : integer -> integer
   ;; Return the number of grains on the n-th chessboard square
+  (define (square-rec n acc)
+    (if (eq? n 1)
+      acc
+      (square-rec (- n 1) (* 2 acc))))
   (assert (<= 1 n 64))
-  (expt 2 (- n 1)))
+  (square-rec n 1))
+
 
 (define (total)
   ;; total : -> integer
