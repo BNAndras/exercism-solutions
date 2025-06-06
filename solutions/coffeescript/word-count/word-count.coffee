@@ -1,6 +1,5 @@
 class WordCount
-  constructor: (phrase) ->
-    @phrase = phrase
+  constructor: (@phrase) ->
 
   count: ->
     @phrase
