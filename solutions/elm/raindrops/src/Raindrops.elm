@@ -11,17 +11,17 @@ raindrops number =
             , getDropSound "Plang" 5
             , getDropSound "Plong" 7
             ]
-
-        response =
-            dropSounds
-                |> List.map (\x -> x number)
-                |> String.concat
     in
-    if response /= "" then
-        response
+    dropSounds
+        |> List.map ((|>) number)
+        |> String.concat
+        |> (\sounds ->
+                if String.isEmpty sounds then
+                    String.fromInt number
 
-    else
-        String.fromInt number
+                else
+                    sounds
+           )
 
 
 
