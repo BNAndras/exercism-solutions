@@ -14,4 +14,4 @@
 (define (total)
   ;; total : -> integer
   ;; Return the total number of grains on a filled chessboard
-  (- (expt 2 64) 1))
+  (- (* 2 (square 64)) 1))
