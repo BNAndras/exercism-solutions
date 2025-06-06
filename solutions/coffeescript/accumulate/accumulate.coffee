@@ -1,2 +1,2 @@
 Array::accumulate = (fn) ->
-  fn(elem) for elem in this
+  fn(elem) for elem in @
