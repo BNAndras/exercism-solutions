@@ -1,6 +1,6 @@
-export function isPangram(word: string) : boolean {
-  const regex = new RegExp(/[^a-z]/g)
-  const reduced = word.toLowerCase()
-                      .replace(regex, "");
-  return new Set(reduced).size === 26;
+const alphabet = [...'abcdefghijklmnopqrstuvwxyz']
+
+export function isPangram(phrase: string) : boolean {
+  phrase = phrase.toLowerCase()
+  return alphabet.every(letter => phrase.includes(letter));
 }
