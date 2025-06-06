@@ -1,20 +1,25 @@
-const ERR_INVALID_INPUT = "Invalid input DNA.";
-const REGEX_TEST_FOR_INVALID_NUC = new RegExp("[^CGAT]","g")
-
-const complements: { [key: string]: string } = {
-  "G": "C",
-  "C": "G",
-  "T": "A",
-  "A": "U",
+enum nucleotide {
+  adenine = "A",
+  cytosine = "C",
+  guanine = "G",
+  thymine = "T",
+  uracil = "U",
 }
 
-export function toRna(dna: string): string {
-  if (dna.match(REGEX_TEST_FOR_INVALID_NUC)) {
-    throw new Error(ERR_INVALID_INPUT);
-  }
+const mapping = new Map([
+  [nucleotide.guanine, nucleotide.cytosine],
+  [nucleotide.cytosine, nucleotide.guanine],
+  [nucleotide.thymine, nucleotide.adenine],
+  [nucleotide.adenine, nucleotide.uracil],
+]);
 
-  return [...dna].reduce((output, letter) => {
-    output += complements[letter];
-    return output
-  }, '')
+export function toRna(dna: string): string {
+  return [...dna].reduce((rna, c) => {
+    const n = mapping.get(c as nucleotide);
+    if (n === undefined) {
+      throw new Error("Invalid input DNA.");
+    }
+    rna += n;
+    return rna;
+  }, "");
 }
