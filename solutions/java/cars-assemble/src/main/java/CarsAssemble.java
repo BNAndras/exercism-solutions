@@ -1,24 +1,23 @@
 public class CarsAssemble {
+
+    private static final int baseRate = 221;
+    
     public double productionRatePerHour(int speed) {
-        double production = switch (speed) {
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-                yield 0.9;
-            case 9:
-                yield 0.8;
-            case 10:
-                yield 0.77;
-            default:
-                yield 1.0;
-        };
-        final int CARS_EACH_HOUR = 221;
-        return  speed*CARS_EACH_HOUR*production;
+        double rate = 0.0;
+        if (1 <= speed && speed <= 4) {
+            rate = 1.00;
+        } else if (speed < 9) {
+            rate = 0.9;
+        } else if (speed == 9) {
+            rate = 0.8;
+        } else if (speed == 10) {
+            rate = 0.77;
+        }
+            
+        return speed * baseRate * rate;
     }
 
     public int workingItemsPerMinute(int speed) {
-        return (int)productionRatePerHour(speed)/60;
+         return (int) productionRatePerHour(speed) / 60;
     }
-} 
- 
+}
