@@ -11,14 +11,14 @@ distance left right =
 
 
 countUnmatchedChars : String -> String -> Int
-countUnmatchedChars s1 s2 =
-    String.toList s1
+countUnmatchedChars left right =
+    String.toList left
         |> List.map2 (/=)
-            (String.toList s2)
+            (String.toList right)
         |> List.filter identity
         |> List.length
 
 
 isEqualLength : String -> String -> Bool
-isEqualLength s1 s2 =
-    String.length s1 == String.length s2
+isEqualLength left right =
+    String.length left == String.length right
