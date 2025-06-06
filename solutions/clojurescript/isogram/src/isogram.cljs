@@ -1,9 +1,9 @@
 (ns isogram)
 
-(defn isogram?
+(defn isogram? 
   [word]
-  "Checks if a word has no repeating letters."
-  (let [cleaned (->> word
-                    (.toLowerCase)
-                    (filter #(re-find #"(?u)[\p{Letter}]" %)))]
-  (= (distinct cleaned) cleaned)))
+  "Checks if a word has no repeating letters." 
+  (->> word
+      (.toLowerCase)
+      (remove #(re-find #"(?u)[^\p{Letter}]" %))
+      (apply distinct?)))
