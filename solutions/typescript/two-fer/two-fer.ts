@@ -1,3 +1,5 @@
-export function twoFer(person: string = "you"): string {
-  return `One for ${person}, one for me.`;
+type Name = string | 'you';
+
+export function twoFer(person: Name = "you"): string {
+  return `One for ${person}, one for me.`; 
 }
