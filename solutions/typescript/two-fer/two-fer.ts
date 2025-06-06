@@ -1,5 +1,5 @@
-type Name = "you";
+type Name = number;
 
-export function twoFer(person: Name = "you"): string {
+export function twoFer(person: string = "you"): string {
   return `One for ${person}, one for me.`; 
 }
