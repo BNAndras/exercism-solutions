@@ -73,4 +73,4 @@ def exchangeable_value(budget, exchange_rate, spread, denomination):
     """
     modified_rate = exchange_rate + exchange_rate * spread / 100
     exchanged_balance = exchange_money(budget, modified_rate)
-    return get_number_of_bills(exchanged_balance, denomination) * denomination
+    return get_number_of_bills(exchanged_balance, denomination) * denomination // 1
