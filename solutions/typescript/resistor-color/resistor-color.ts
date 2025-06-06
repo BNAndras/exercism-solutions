@@ -1,5 +1,19 @@
-export const COLORS = ["black", "brown","red","orange","yellow","green","blue","violet","grey", "white"] 
+export const COLORS = 
+[
+"black",
+"brown",
+"red",
+"orange",
+"yellow",
+"green",
+"blue",
+"violet",
+"grey", 
+"white",
+] as const
 
-export const colorCode = (code: string) : number => {
+export type Color = typeof COLORS[number]
+
+export const colorCode = (code: Color) : number => {
   return COLORS.indexOf(code);
 }
