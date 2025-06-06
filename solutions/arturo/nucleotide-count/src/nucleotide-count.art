@@ -1,0 +1,10 @@
+nucleotideCounts: function [strand][
+    if empty? strand -> return #[A: 0 C: 0 G: 0 T: 0]
+
+    fold.seed:#[A: 0 C: 0 G: 0 T: 0] strand [acc nuc] [
+        if not? in? to :string nuc keys acc -> return null
+
+        acc\[nuc]: inc acc\[nuc]
+        acc
+    ]
+]
