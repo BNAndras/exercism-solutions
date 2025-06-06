@@ -1,4 +1,7 @@
+use context essentials2020
+
 provide: abbreviate end
+
 
 fun abbreviate(phrase :: String) -> String:
   string-split-all(phrase, " ").foldl(
