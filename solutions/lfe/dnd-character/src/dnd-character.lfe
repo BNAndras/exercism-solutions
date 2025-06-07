@@ -6,7 +6,7 @@
           (get-dexterity 1)
           (get-constitution 1)
           (get-intelligence 1)
-          (get-wisdom 1)
+            (get-wisdom 1)
           (get-charisma 1)
           (get-hitpoints 1)))
 
