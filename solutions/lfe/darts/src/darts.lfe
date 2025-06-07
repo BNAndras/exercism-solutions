@@ -3,7 +3,7 @@
 
 (defun score (x y)
   (assign-score (math:sqrt (+ (* x x)
-                              (* y y)))))
+                               (* y y)))))
 
 (defun assign-score
   ((dist) (when (=< dist 1)) 10)
