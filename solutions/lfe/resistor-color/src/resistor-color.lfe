@@ -1,7 +1,7 @@
 (defmodule resistor-color
     (export (color-code 1) (colors 0)))
 
-(defun color-code
+(defun color-code 
     (("black") 0)
     (("brown") 1)
     (("red") 2)
