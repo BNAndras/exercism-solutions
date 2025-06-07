@@ -4,7 +4,7 @@
 (defun calculate
     ((1) 1)
     ((radicand) (sqrt radicand
-                      (div radicand 2))))
+                       (div radicand 2))))
 
 (defun sqrt
     ((radicand guess) (when (=:= radicand
