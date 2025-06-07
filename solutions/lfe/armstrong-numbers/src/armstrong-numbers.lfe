@@ -4,7 +4,7 @@
 (defun armstrong-number? (number)
   (let* ((digits (digits-of number))
           (len (length digits))
-          (sum (lists:foldl (lambda (digit acc)
+           (sum (lists:foldl (lambda (digit acc)
                                       (+ acc (floor (math:pow digit len))))
                             0
                             digits)))
