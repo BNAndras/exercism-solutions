@@ -4,7 +4,7 @@
 (defun isogram? (phrase)
   (let* ((lowered (string:to_lower phrase))
          (chars (re:replace lowered
-                            "[^a-z]"
+                             "[^a-z]"
                             ""
                             '(#(return list) global)))
          (uniques (lists:usort chars)))
