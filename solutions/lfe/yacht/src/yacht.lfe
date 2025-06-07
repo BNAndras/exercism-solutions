@@ -2,7 +2,7 @@
   (export (score 2)))
 
 (include-lib "lfe/include/clj.lfe")
-
+ 
 (defun score
   ((dice 'yacht)
     (if (=:= (length (lists:uniq dice)) 1) 50 0))
