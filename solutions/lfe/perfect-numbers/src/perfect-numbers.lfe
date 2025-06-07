@@ -4,7 +4,7 @@
 (defun classify (number)
   (if (=< number 0)
       'false
-      (let ((sum-of-factors (lists:sum (factors-of number))))
+      (let ((sum-of-factors (lists:sum (factors-of  number))))
         (label number sum-of-factors))))
 
 (defun factors-of (number)
