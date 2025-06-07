@@ -5,7 +5,7 @@
 (defrecord queen 
   row
   column)
-
+ 
 (defun create
   ((row column)
    (when (or (or (< row 0)
