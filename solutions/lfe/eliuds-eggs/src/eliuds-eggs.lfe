@@ -3,7 +3,7 @@
 
 (defun egg-count (display-value)
   (do-count display-value 0))
-
+ 
 (defun do-count
   ((0 steps)
      steps)
