@@ -4,7 +4,7 @@
 (defun commands (number)
   (let* ((all-digits (integer_to_list number 2))
          (last-five (string:slice (string:reverse all-digits) 0 5)))
-        (lists:reverse (retrieve-command last-five 0 '()))))
+         (lists:reverse (retrieve-command last-five 0 '()))))
 
 (defun retrieve-command
     (((cons 49 tail) 0 acc)
