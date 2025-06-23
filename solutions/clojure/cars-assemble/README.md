@@ -74,4 +74,8 @@ Note that the value returned is an `int`.
 
 ### Created by
 
-- @porkostomus
+- @bobbicodes
+
+### Contributed to by
+
+- @tasxatzial
