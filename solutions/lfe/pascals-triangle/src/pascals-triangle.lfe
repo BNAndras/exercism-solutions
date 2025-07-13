@@ -11,7 +11,7 @@
     (do-rows (- count 1) '((1))))
   ((count (= (cons head _) row))
     (do-rows (- count 1) (cons (next-row head) row))))
-
+ 
 (defun next-row (row)
   (lists:zipwith (lambda (a b) (+ a b))
                  (++ '(0) row)
