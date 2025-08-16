@@ -1,23 +1,37 @@
-using System.Linq;
-
 public static class ScrabbleScore
 {
     public static int Score(string input) =>
-        input.Sum(chr => chr.Value());
-}
+        input.Sum(Score);
 
-public static class CharExtensions
-{
-    public static int Value(this char letter) =>
-        char.ToUpper(letter) switch
+    private static int Score(char c) =>
+        char.ToUpper(c) switch
         {
-            'A' or 'E' or 'I' or 'O' or 'U' or 'L' or 'N' or 'R' or 'S' or 'T' => 1,
-            'D' or 'G' => 2,
-            'B' or 'C' or 'M' or 'P' => 3,
-            'F' or 'H' or 'V' or 'W' or 'Y' => 4,
-            'K' => 5,
-            'J' or 'X' => 8,
-            'Q' or 'Z' => 10,
-            _ => 0
+            'A' =>  1,
+            'B' =>  3,
+            'C' =>  3,
+            'D' =>  2,
+            'E' =>  1,
+            'F' =>  4,
+            'G' =>  2,
+            'H' =>  4,
+            'I' =>  1,
+            'J' =>  8,
+            'K' =>  5,
+            'L' =>  1,
+            'M' =>  3,
+            'N' =>  1,
+            'O' =>  1,
+            'P' =>  3,
+            'Q' => 10,
+            'R' =>  1,
+            'S' =>  1,
+            'T' =>  1,
+            'U' =>  1,
+            'V' =>  4,
+            'W' =>  4,
+            'X' =>  8,
+            'Y' =>  4,
+            'Z' => 10,
+            _ =>    0,
         };
 }
