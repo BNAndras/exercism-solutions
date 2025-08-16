@@ -1,0 +1,111 @@
+" Equilateral test cases
+
+Execute (equilateral - all sides are equal):
+  let g:input = [2, 2, 2]
+  let g:expected = 1
+  AssertEqual g:expected, Equilateral(g:input)
+
+Execute (equilateral - any side is unequal):
+  let g:input = [2, 3, 2]
+  let g:expected = 0
+  AssertEqual g:expected, Equilateral(g:input)
+
+Execute (equilateral - no sides are equal):
+  let g:input = [5, 4, 6]
+  let g:expected = 0
+  AssertEqual g:expected, Equilateral(g:input)
+
+Execute (equilateral - all zero sides is not a triangle):
+  let g:input = [0, 0, 0]
+  let g:expected = 0
+  AssertEqual g:expected, Equilateral(g:input)
+
+Execute (equilateal - sides may be floats):
+  let g:input = [0.5, 0.5, 0.5]
+  let g:expected = 1
+  AssertEqual g:expected, Equilateral(g:input)
+
+" Isosceles test cases
+
+Execute (isosceles - last two sides are equal):
+  let g:input = [3, 4, 4]
+  let g:expected = 1
+  AssertEqual g:expected, Isosceles(g:input)
+
+Execute (isosceles - first two sides are equal):
+  let g:input = [4, 4, 3]
+  let g:expected = 1
+  AssertEqual g:expected, Isosceles(g:input)
+
+Execute (isosceles - first and last sides are equal):
+  let g:input = [4, 3, 4]
+  let g:expected = 1
+  AssertEqual g:expected, Isosceles(g:input)
+
+Execute (isosceles - equilateral triangles are also isosceles):
+  let g:input = [4, 4, 4]
+  let g:expected = 1
+  AssertEqual g:expected, Isosceles(g:input)
+
+Execute (isosceles - no sides are equal):
+  let g:input = [2, 3, 4]
+  let g:expected = 0
+  AssertEqual g:expected, Isosceles(g:input)
+
+Execute (isosceles - first triangle inequality violation):
+  let g:input = [1, 1, 3]
+  let g:expected = 0
+  AssertEqual g:expected, Isosceles(g:input)
+
+Execute (isosceles - second triangle inequality violation):
+  let g:input = [1, 3, 1]
+  let g:expected = 0
+  AssertEqual g:expected, Isosceles(g:input)
+
+Execute (isosceles - third triangle inequality violation):
+  let g:input = [3, 1, 1]
+  let g:expected = 0
+  AssertEqual g:expected, Isosceles(g:input)
+
+Execute (isosceles - sides may be floats):
+  let g:input = [0.5, 0.4, 0.5]
+  let g:expected = 1
+  AssertEqual g:expected, Isosceles(g:input)
+
+" Scalene test cases
+
+Execute (scalene - no sides are equal):
+  let g:input = [5, 4, 6]
+  let g:expected = 1
+  AssertEqual g:expected, Scalene(g:input)
+
+Execute (scalene - all sides are equal):
+  let g:input = [4, 4, 4]
+  let g:expected = 0
+  AssertEqual g:expected, Scalene(g:input)
+
+Execute (scalene - first and second sides are equal):
+  let g:input = [4, 4, 3]
+  let g:expected = 0
+  AssertEqual g:expected, Scalene(g:input)
+
+Execute (scalene - first and third sides are equal):
+  let g:input = [3, 4, 3]
+  let g:expected = 0
+  AssertEqual g:expected, Scalene(g:input)
+
+Execute (scalene - second and third sides are equal):
+  let g:input = [4, 3, 3]
+  let g:expected = 0
+  AssertEqual g:expected, Scalene(g:input)
+
+Execute (scalene - may not violate triangle inequality):
+  let g:input = [7, 3, 2]
+  let g:expected = 0
+  AssertEqual g:expected, Scalene(g:input)
+
+Execute (scalene - sides may be floats):
+  let g:input = [0.5, 0.4, 0.6]
+  let g:expected = 1
+  AssertEqual g:expected, Scalene(g:input)
+
