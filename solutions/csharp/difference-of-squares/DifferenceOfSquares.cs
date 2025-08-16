@@ -1,12 +1,11 @@
-using System;
-
 public static class DifferenceOfSquares
 {
     public static int CalculateSquareOfSum(int max) =>
-        (int) Math.Pow((max * (max + 1)) / 2, 2);
+        (int) Math.Pow(Enumerable.Range(1, max).Sum(), 2);
 
     public static int CalculateSumOfSquares(int max) =>
-        (max * (max + 1) * ((2 * max) + 1)) / 6;
+        Enumerable.Range(1, max).Select(n => n * n).Sum();
+    
 
     public static int CalculateDifferenceOfSquares(int max) =>
         CalculateSquareOfSum(max) - CalculateSumOfSquares(max);
