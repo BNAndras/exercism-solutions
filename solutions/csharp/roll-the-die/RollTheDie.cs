@@ -1,12 +1,9 @@
-using System;
-
 public class Player
 {
-    private static Random Rand => new Random();
-    
+    private static readonly Random Rnd = new();
     public int RollDie() =>
-        Rand.Next(1, 19);
+        Rnd.Next(1, 10);
 
     public double GenerateSpellStrength() =>
-        Rand.NextDouble() * 100;
+        Rnd.NextDouble() * 100;
 }
