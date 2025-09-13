@@ -1,10 +1,9 @@
 def convert(number):
-    noise = ""
-    if not number % 3:
-        noise = "Pling"
-    if not number % 5:
-        noise += "Plang"
-    if not number % 7:
-        noise += "Plong"
-
-    return noise if noise else f"{number}"
+    converted = ''
+    if number % 3 == 0:
+        converted = 'Pling'
+    if number % 5 == 0:
+        converted += 'Plang'
+    if number % 7 == 0:
+        converted += 'Plong'
+    return converted if converted else str(number)
