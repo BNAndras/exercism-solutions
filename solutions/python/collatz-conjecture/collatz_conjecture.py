@@ -1,12 +1,16 @@
+import itertools
+
 def steps(number):
     if number <= 0:
-        raise ValueError("Only positive integers are allowed")
-    tally = 0
-    working = number
-    while working != 1:
-        if working % 2 == 0:
-            working //= 2
+        raise ValueError('Only positive integers are allowed')
+
+    for step in itertools.count():
+        if number == 1:
+            return step
+        
+        if number % 2 == 1:
+            number = number * 3 + 1
         else:
-            working = 3 * working + 1
-        tally += 1
-    return tally
+            number /= 2
+        
+    return None
