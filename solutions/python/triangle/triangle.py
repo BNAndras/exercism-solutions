@@ -1,22 +1,23 @@
-def is_triangle(func):
-    def wrapper(sides):
-        a, b, c = sorted(sides)
-        satisfies_inequality = a + b >= c
-        nonzero_sides = a > 0 and b > 0 and c > 0
-        return nonzero_sides and satisfies_inequality and func(sides)
-    return wrapper
-
-
-@is_triangle
 def equilateral(sides):
-    return len(set(sides)) == 1
+    return is_triangle(sides) and len(set(sides)) == 1
 
 
-@is_triangle
 def isosceles(sides):
-    return len(set(sides)) < 3
+    return is_triangle(sides) and len(set(sides)) < 3
 
 
-@is_triangle
 def scalene(sides):
-    return len(set(sides)) == 3
+    return is_triangle(sides) and len(set(sides)) == 3
+
+
+def is_triangle(sides):
+    return has_non_zero_sides(*sides) and satisfies_inequality(sides)
+
+
+def has_non_zero_sides(a, b, c):
+    return a > 0 and b > 0 and c > 0
+
+
+def satisfies_inequality(sides):
+    [a, b, c] = sorted(sides)
+    return a + b >= c
