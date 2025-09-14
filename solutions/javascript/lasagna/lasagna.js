@@ -6,9 +6,9 @@
 const PREPARATION_MINUTES_PER_LAYER = 2;
 
 /**
- * The number of minute it takes to bake a lasagna
+ * The number of minutes it takes to bake a lasagna regardless of layer count.
  */
-export const EXPECTED_MINUTES_IN_OVEN = 40
+export const EXPECTED_MINUTES_IN_OVEN = 40;
 
 /**
  * Determines the number of minutes the lasagna still needs to remain in the
