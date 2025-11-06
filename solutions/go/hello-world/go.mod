@@ -1,3 +1,3 @@
 module greeting
 
-go 1.1
+go 1
