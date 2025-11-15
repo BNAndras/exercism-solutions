@@ -7,7 +7,7 @@ class Lasagna
     
     public int PreparationTimeInMinutes(int numberOfLayers) =>
         numberOfLayers * 2;
-
-    public int ElapsedTimeInMinutes(int numberOfLayers, int timeInOven) =>
-        PreparationTimeInMinutes(numberOfLayers) + timeInOven;
+    
+    public int ElapsedTimeInMinutes(int numberOfLayers, int timeElapsed) =>
+        PreparationTimeInMinutes(numberOfLayers) + timeElapsed;
 }
