@@ -1,37 +1,36 @@
 public static class ScrabbleScore
 {
-    public static int Score(string input) =>
-        input.Sum(Score);
+    public static int Score(string input) => input.Sum(LetterScore);
 
-    private static int Score(char c) =>
-        char.ToUpper(c) switch
+    private static int LetterScore(char letter) =>
+        char.ToUpper(letter) switch
         {
-            'A' =>  1,
-            'B' =>  3,
-            'C' =>  3,
-            'D' =>  2,
-            'E' =>  1,
-            'F' =>  4,
-            'G' =>  2,
-            'H' =>  4,
-            'I' =>  1,
-            'J' =>  8,
-            'K' =>  5,
-            'L' =>  1,
-            'M' =>  3,
-            'N' =>  1,
-            'O' =>  1,
-            'P' =>  3,
+            'A' => 1,
+            'E' => 1,
+            'I' => 1,
+            'O' => 1,
+            'U' => 1,
+            'L' => 1,
+            'N' => 1,
+            'R' => 1,
+            'S' => 1,
+            'T' => 1,
+            'D' => 2,
+            'G' => 2,
+            'B' => 3,
+            'C' => 3, 
+            'M' => 3,
+            'P' => 3,
+            'F' => 4,
+            'H' => 4,
+            'V' => 4,
+            'W' => 4,
+            'Y' => 4,
+            'K' => 5,
+            'J' => 8,
+            'X' => 8,
             'Q' => 10,
-            'R' =>  1,
-            'S' =>  1,
-            'T' =>  1,
-            'U' =>  1,
-            'V' =>  4,
-            'W' =>  4,
-            'X' =>  8,
-            'Y' =>  4,
             'Z' => 10,
-            _ =>    0,
+            _ => 0
         };
 }
