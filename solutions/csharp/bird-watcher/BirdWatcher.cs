@@ -1,11 +1,7 @@
-using System.Linq;
-
 class BirdCount(int[] birdsPerDay)
 {
     public static int[] LastWeek() =>
-    [
-        0, 2, 5, 3, 7, 8, 4
-    ];
+        [0, 2, 5, 3, 7, 8, 4];
 
     public int Today() =>
         birdsPerDay[^1];
