@@ -1,18 +1,16 @@
+
 public static class Darts
 {
-    private static readonly IReadOnlyList<(Func<double, bool> Rule, int Score)> StandardRules =
-    [
-        
-        (d => d <= 1, 10),
-        (d => d <= 5,  5),
-        (d => d <= 10, 1)
-    ];
-    
-    public static int Score(double x, double y, IReadOnlyList<(Func<double, bool> Rule, int Score)>? rules = null)
+    private static readonly List<(double MaxRadiusSquared, int Points)> Rules = new()
     {
-        double distance = Math.Sqrt(x * x + y * y);
-        return (rules ?? StandardRules)
-            .FirstOrDefault(rule => rule.Rule(distance))
-            .Score;     
+        (1, 10),        // inner circle
+        (25, 5),        // middle circle
+        (100, 1)        // outer circle
+    };
+    
+    public static int Score(double x, double y)
+    {
+        double distSquared = x * x + y * y;
+        return Rules.FirstOrDefault(r => distSquared <= r.MaxRadiusSquared).Points;   
     }
 }
