@@ -116,3 +116,4 @@ On each application the interest amount is computed and added to the principal b
 
 - @ErikSchierboom
 - @yzAlvin
+- @karanchadha10
