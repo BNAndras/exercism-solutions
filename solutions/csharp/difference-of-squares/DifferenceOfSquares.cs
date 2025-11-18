@@ -1,12 +1,14 @@
 public static class DifferenceOfSquares
 {
-    public static int CalculateSquareOfSum(int max) =>
-        (int) Math.Pow(Enumerable.Range(1, max).Sum(), 2);
+    public static int CalculateSquareOfSum(int max)
+    {
+        var sum = max * (max + 1) / 2;
+        return sum * sum;
+    }
 
-    public static int CalculateSumOfSquares(int max) =>
-        Enumerable.Range(1, max).Select(n => n * n).Sum();
-    
+    public static int CalculateSumOfSquares(int max)  =>
+        max * ( max + 1 ) * ( 2 * max + 1 ) / 6;
 
     public static int CalculateDifferenceOfSquares(int max) =>
-        CalculateSquareOfSum(max) - CalculateSumOfSquares(max);
+        CalculateSquareOfSum(max) -  CalculateSumOfSquares(max);
 }
