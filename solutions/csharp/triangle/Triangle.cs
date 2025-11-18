@@ -1,26 +1,30 @@
-using System.Collections.Generic;
-
 public static class Triangle
 {
     public static bool IsScalene(double side1, double side2, double side3) =>
-        IsValid(side1, side2, side3) && new HashSet<double>() { side1, side2, side3 }.Count == 3;
+        IsTriangle(side1, side2, side3)
+        && DistinctSides(side1, side2, side3) == 3;
 
     public static bool IsIsosceles(double side1, double side2, double side3) =>
-        IsValid(side1, side2, side3) && new HashSet<double>() { side1, side2, side3 }.Count <= 2;
+        IsTriangle(side1, side2, side3)
+        && DistinctSides(side1, side2, side3) <= 2;
 
-    public static bool IsEquilateral(double side1, double side2, double side3)  =>
-        IsValid(side1, side2, side3) && new HashSet<double>() { side1, side2, side3 }.Count == 1;
-    
-    private static bool IsValid(double side1, double side2, double side3) =>
-        HasNonZeroSides(side1, side2, side3) && SatisfiesTriangleInequality(side1, side2, side3);
-    
-    private static bool HasNonZeroSides(double side1, double side2, double side3) =>
+    public static bool IsEquilateral(double side1, double side2, double side3) =>
+        IsTriangle(side1, side2, side3)
+        && DistinctSides(side1, side2, side3) == 1;
+
+    private static bool IsTriangle(double side1, double side2, double side3) =>
+        AllSidesValid(side1, side2, side3)
+        && SatisfiesInequality(side1, side2, side3);
+
+    private static bool SatisfiesInequality(double side1, double side2, double side3) =>
+        side1 + side2 >= side3 && side1 + side3 >= side2 && side2 + side3 >= side1;
+
+    private static bool AllSidesValid(double side1, double side2, double side3) =>
         side1 > 0 && side2 > 0 && side3 > 0;
 
-    private static bool SatisfiesTriangleInequality(double side1, double side2, double side3)
+    private static int DistinctSides(double side1, double side2, double side3)
     {
-        List<double> sides = [side1, side2, side3];
-        sides.Sort(); 
-        return sides[0] + sides[1] >= sides[2];
+        double[] sides = [side1, side2, side3];
+        return sides.Distinct().Count();
     }
 }
