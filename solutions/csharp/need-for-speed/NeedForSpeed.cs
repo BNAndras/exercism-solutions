@@ -1,55 +1,35 @@
-using System;
-
-class RemoteControlCar
+class RemoteControlCar(int speed, int batteryDrain)
 {
-    private int Distance { get; set; }  = 0;
-    private int Battery { get; set; } = 100;
+    private int _battery = 100;
+    private int _distance;
+    
+    private int Speed => speed;
+    private int BatteryDrain => batteryDrain;
 
-    private int Speed { get; }
-    private int Drain { get; }
-
-    public RemoteControlCar(int speed, int batteryDrain)
-    {
-        Speed = speed;
-        Drain = batteryDrain;
-    }
-    public bool BatteryDrained() =>
-        Drain > Battery;
-
-    public int DistanceDriven() =>
-        Distance;
+    public bool BatteryDrained() => _battery < BatteryDrain;
+    public int DistanceDriven() => _distance;
 
     public void Drive()
     {
-        if (BatteryDrained())
-            return;
-        
-        Battery -= Drain;
-        Distance += Speed;
+        if (BatteryDrained()) return;
+        _battery -= BatteryDrain;
+        _distance += Speed;
     }
 
-    public static RemoteControlCar Nitro() =>
-        new(50, 4);
+    public static RemoteControlCar Nitro() => new(50, 4);
 }
 
-class RaceTrack
+class RaceTrack(int distance)
 {
-
-    private int Distance { get; }
-
-    public RaceTrack(int distance)
-    {
-        Distance = distance;
-    }
-     
+    private int Distance => distance;
 
     public bool TryFinishTrack(RemoteControlCar car)
     {
-        while (!car.BatteryDrained())
+        while (car.DistanceDriven() < Distance && !car.BatteryDrained())
         {
             car.Drive();
         }
         
-        return car.DistanceDriven() >= Distance;
+        return car.DistanceDriven() == Distance;
     }
 }
