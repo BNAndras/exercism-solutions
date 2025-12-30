@@ -47,3 +47,4 @@ player.GenerateSpellStrength();
 - @ErikSchierboom
 - @yzAlvin
 - @aage
+- @karanchadha10
