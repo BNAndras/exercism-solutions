@@ -5,9 +5,10 @@ public static class Etl
         Dictionary<string, int> result = new();
         foreach ((int score, string[] letters) in old)
         {
-            foreach (var letter in letters)
+            foreach (string letter in letters)
             {
-                result[letter.ToLowerInvariant()] = score;
+                string lowered = letter.ToLowerInvariant();
+                result[lowered] = score;
             }
         }
         return result;
