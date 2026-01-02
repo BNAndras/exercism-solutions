@@ -1,40 +1,35 @@
-using System;
-
-abstract class Character
+abstract class Character(string characterType)
 {
-    private string CharacterType { get; }
-    protected Character(string characterType) =>
-        CharacterType = characterType;
-
     public abstract int DamagePoints(Character target);
 
     public virtual bool Vulnerable() =>
         false;
 
     public override string ToString() =>
-        $"Character is a {CharacterType}";
+        $"Character is a {characterType}";
 }
 
-class Warrior() : Character("Warrior")
+class Warrior() : Character(nameof(Warrior))
 {
     public override int DamagePoints(Character target) =>
         target.Vulnerable() ? 10 : 6;
 }
 
-class Wizard() : Character("Wizard")
+class Wizard() : Character(nameof(Wizard))
 {
-    private bool PreparedSpell { get; set; }
-    public override int DamagePoints(Character target)  =>
-        PreparedSpell ? 12 : 3;
+    private bool _spellPrepared;
+
+    public override int DamagePoints(Character target) =>
+        _spellPrepared ? 12: 3;
 
     public void PrepareSpell()
     {
-        if (!PreparedSpell)
+        if (!_spellPrepared)
         {
-            PreparedSpell = true;
+            _spellPrepared = true;
         }
     }
 
     public override bool Vulnerable() =>
-        !PreparedSpell;
+        !_spellPrepared;
 }
