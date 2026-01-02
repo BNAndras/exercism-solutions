@@ -1,36 +1,33 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 public static class ProteinTranslation
 {
     public static string[] Proteins(string strand) =>
         strand
             .Chunk(3)
             .Select(chars => new string(chars))
-            .TakeWhile(c => Mappings.TryGetValue(c, out string protein) && protein != "STOP")
-            .Select(c => Mappings[c])
+            .Select(Translate)
+            .TakeWhile(c => c != "STOP")
             .ToArray();
-    
-    private static Dictionary<string, string> Mappings =>
-        new()
+
+    private static string Translate(string codon) =>
+        codon switch
         {
-            {"AUG", "Methionine"},
-            {"UUU", "Phenylalanine"},
-            {"UUC", "Phenylalanine"},
-            {"UUA", "Leucine"},
-            {"UUG", "Leucine"},
-            {"UCU", "Serine"},
-            {"UCC", "Serine"},
-            {"UCA", "Serine"},
-            {"UCG", "Serine"},
-            {"UAU", "Tyrosine"},
-            {"UAC", "Tyrosine"},
-            {"UGU", "Cysteine"},
-            {"UGC", "Cysteine"},
-            {"UGG", "Tryptophan"},
-            {"UAA", "STOP"},
-            {"UAG", "STOP"},
-            {"UGA", "STOP"},
+            "AUG" => "Methionine",
+            "UUU" => "Phenylalanine",
+            "UUC" => "Phenylalanine",
+            "UUA" => "Leucine",
+            "UUG" => "Leucine",
+            "UCU" => "Serine",
+            "UCC" => "Serine",
+            "UCA" => "Serine",
+            "UCG"  => "Serine",
+            "UAU" => "Tyrosine",
+            "UAC" => "Tyrosine",
+            "UGU" => "Cysteine",
+            "UGC" => "Cysteine",
+            "UGG" => "Tryptophan",
+            "UAA" => "STOP",
+            "UAG" => "STOP",
+            "UGA" => "STOP",
+            _ => throw new ArgumentOutOfRangeException(nameof(codon), codon, "Not a valid codon")
         };
 }
