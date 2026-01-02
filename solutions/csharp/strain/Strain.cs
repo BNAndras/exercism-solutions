@@ -1,19 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 public static class Strain
 {
     public static IEnumerable<T> Keep<T>(this IEnumerable<T> collection, Func<T, bool> predicate)
     {
-        foreach (T element in collection)
+        foreach (T item in collection)
         {
-            if (predicate(element))
+            if (predicate(item))
             {
-                yield return element;
+                yield return item;
             }
         }
     }
 
-    public static IEnumerable<T> Discard<T>(this IEnumerable<T> collection, Func<T, bool> predicate) =>
-        collection.Keep(x => !predicate(x));
+    public static IEnumerable<T> Discard<T>(this IEnumerable<T> collection, Func<T, bool> predicate)  =>
+        collection.Keep(val => !predicate(val));
 }
