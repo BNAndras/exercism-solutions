@@ -1,3 +1,8 @@
-import.version:1.1.2 {unitt}!
+execute ~{|sys\binary| -p install unitt 3.0.0}
+exe: switch "windows" = sys\os 
+    -> "unitt.bat" 
+    -> "unitt"
 
-runTests.failFast findTests "tests"
+fullpath: normalize ~"|path\home|/.arturo/packages/bin/|exe|"
+code: execute.code.directly fullpath
+panic.unstyled.code: code ""
