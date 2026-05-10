@@ -1,9 +1,9 @@
 public static class ScrabbleScore
 {
-    public static int Score(string input) => input.Sum(LetterScore);
+    public static int Score(string input) => input.ToUpper().Sum(Score);
 
-    private static int LetterScore(char letter) =>
-        char.ToUpper(letter) switch
+    private static int Score(char chr) =>
+        chr switch
         {
             'A' => 1,
             'E' => 1,
@@ -18,8 +18,8 @@ public static class ScrabbleScore
             'D' => 2,
             'G' => 2,
             'B' => 3,
-            'C' => 3, 
-            'M' => 3,
+            'C' => 3,
+            'M' => 3, 
             'P' => 3,
             'F' => 4,
             'H' => 4,
@@ -31,6 +31,6 @@ public static class ScrabbleScore
             'X' => 8,
             'Q' => 10,
             'Z' => 10,
-            _ => 0
+            _   => 0
         };
 }
