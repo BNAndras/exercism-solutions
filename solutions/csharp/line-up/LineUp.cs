@@ -1,24 +1,22 @@
+using System.Runtime.InteropServices.ComTypes;
+
 public static class LineUp
 {
     public static string Format(string name, int number) =>
-        $"{name}, you are the {number}{Suffix(number)} customer we serve today. Thank you!";
+        $"{name}, you are the {Formatted(number)} customer we serve today. Thank you!";
 
-    private static string Suffix(int number)
-    {
-        int lastTwoDigits = number % 100;
-        int lastDigit = number % 10;
+    private static string Formatted(int number) =>
+        $"{number}{Suffix(number)}";
 
-        if (lastTwoDigits >= 11 && lastTwoDigits <= 13)
+    private static string Suffix(int number) =>
+        (number % 10, number % 100) switch
         {
-            return "th";
-        }
-
-        return lastDigit switch
-        {
-            1 => "st",
-            2 => "nd",
-            3 => "rd",
-            _ => "th",
+            (_, 11) => "th",
+            (_, 12) => "th",
+            (_, 13) => "th",
+            (1, _) => "st",
+            (2, _) => "nd",
+            (3, _) => "rd",
+            _ => "th"
         };
-    }
 }
