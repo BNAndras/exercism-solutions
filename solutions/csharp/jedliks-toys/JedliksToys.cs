@@ -1,28 +1,26 @@
 class RemoteControlCar
 {
-    private int TotalDistance { get; set; }
-    private int Battery { get; set; } = 100;
-
-    private int BatteryPerTick => 1;
+    private int Distance;
     
-    private int DistancePerTick => 20;
-
+    private int BatteryLevel = 100;
+    
     public static RemoteControlCar Buy() => new();
 
-    public string DistanceDisplay() =>
-        $"Driven {TotalDistance} meters";
-    
-    public string BatteryDisplay() =>
-        CanDrive() ? $"Battery at {Battery}%" : "Battery empty";
+    public string DistanceDisplay() => $"Driven {Distance} meters";
 
-    private bool CanDrive() => Battery > 0;
+    public string BatteryDisplay()
+    {
+        if (BatteryLevel == 0)
+        {
+            return "Battery empty";
+        }
+        return $"Battery at {BatteryLevel}%";
+    }
     
     public void Drive()
     {
-        if (CanDrive())
-        {
-            TotalDistance += DistancePerTick;
-            Battery -= BatteryPerTick;
-        }
+        if (BatteryLevel <= 0) return;
+        BatteryLevel -= 1;
+        Distance += 20;
     }
 }
