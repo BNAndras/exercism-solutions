@@ -35,6 +35,8 @@ It should be possible to close an account; operations against a closed account m
 
 [wikipedia]: https://en.wikipedia.org/wiki/Race_condition#In_software
 
+## Implementation
+
 Pyret doesn't support concurrency so that requirement can be set aside. Account operations are sequential on a single thread.
 
 ## Source
