@@ -1,9 +1,5 @@
 Public Module PascalsTriangle
     Public Function Calculate(ByVal rows As Integer) As IEnumerable(Of IEnumerable(Of Integer))
-        If rows < 0 Then
-            Throw New ArgumentOutOfRangeException(NameOf(rows))
-        End If
-
         Dim triangle = New List(Of IEnumerable(Of Integer))()
         Dim previousRow = Array.Empty(Of Integer)()
 
