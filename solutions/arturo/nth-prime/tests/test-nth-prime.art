@@ -1,0 +1,24 @@
+import.version:3.0.0 {unitt}! 
+import {src/nth-prime}!
+
+describe "Nth Prime" [
+    it "first prime" [
+        expects.be:'equal? @[2 prime 1]
+    ]
+
+    it.skip "second prime" [
+        expects.be:'equal? @[3 prime 2]
+    ]
+
+    it.skip "sixth prime" [
+        expects.be:'equal? @[13 prime 6]
+    ]
+
+    it.skip "big prime" [
+        expects.be:'equal? @[104743 prime 10001]
+    ]
+
+    it.skip "there is no zeroth prime" [
+        expects.be:'false? @[prime 0]
+    ]
+]
