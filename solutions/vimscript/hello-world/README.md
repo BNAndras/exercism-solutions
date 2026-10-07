@@ -1,22 +1,22 @@
-# Hello World
+# Helló, világ!
 
-Welcome to Hello World on Exercism's Vim script Track.
-If you need help running the tests or submitting your code, check out `HELP.md`.
+Üdvözlünk a(z) Helló, világ! feladatnál az Exercism Vim script kurzusán.
+Ha segítségre van szükséged a tesztek futtatásához vagy a kódod beküldéséhez, nézd meg a `HELP.md` fájlt.
 
 ## Instructions
 
-The classical introductory exercise.
-Just say "Hello, World!".
+A klasszikus bevezető feladat.
+Egyszerűen csak mondd: „Hello, World!”.
 
-["Hello, World!"][hello-world] is the traditional first program for beginning programming in a new language or environment.
+A [„Hello, World!”][hello-world] a hagyományos első program, amikor valaki egy új nyelven vagy környezetben kezd el programozni.
 
-The objectives are simple:
+A célok egyszerűek:
 
-- Modify the provided code so that it produces the string "Hello, World!".
-- Run the test suite and make sure that it succeeds.
-- Submit your solution and check it at the website.
+- Úgy módosítsd a megadott kódot, hogy előállítsa a „Hello, World!” stringet.
+- Futtasd le a tesztkészletet, és győződj meg róla, hogy sikeresen lefut.
+- Küldd be a megoldásodat, és ellenőrizd a weboldalon.
 
-If everything goes well, you will be ready to fetch your first real exercise.
+Ha minden jól megy, készen állsz rá, hogy letöltsd az első igazi feladatodat.
 
 [hello-world]: https://en.wikipedia.org/wiki/%22Hello,_world!%22_program
 
