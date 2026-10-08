@@ -1,36 +1,33 @@
 # Two-Fer
 
-Welcome to Two-Fer on Exercism's Vim script Track.
-If you need help running the tests or submitting your code, check out `HELP.md`.
+Üdvözlünk a(z) Two-Fer feladatnál az Exercism Vim script kurzusán.
+Ha segítségre van szükséged a tesztek futtatásához vagy a kódod beküldéséhez, nézd meg a `HELP.md` fájlt.
 
 ## Introduction
 
-In some English accents, when you say "two for" quickly, it sounds like "two fer".
-Two-for-one is a way of saying that if you buy one, you also get one for free.
-So the phrase "two-fer" often implies a two-for-one offer.
+Bizonyos angol akcentusokban, ha gyorsan mondod, hogy „two for”, az úgy hangzik, mint a „two fer”. A two-for-one azt jelenti, hogy ha veszel egyet, kapsz egy másikat ingyen. Így a „two-fer” kifejezés gyakran egy kettőt egy áráért szóló ajánlatra utal.
 
-Imagine a bakery that has a holiday offer where you can buy two cookies for the price of one ("two-fer one!").
-You take the offer and (very generously) decide to give the extra cookie to someone else in the queue.
+Képzelj el egy pékséget, ahol ünnepi akció keretében két sütit vehetsz egy áráért („two-fer one!”). Elfogadod az ajánlatot, és (nagyon nagylelkűen) úgy döntesz, hogy a plusz sütit odaadod valaki másnak, aki a sorban áll.
 
 ## Instructions
 
-Your task is to determine what you will say as you give away the extra cookie.
+A feladatod, hogy eldöntsd, mit mondasz, amikor odaadod a plusz sütit.
 
-If you know the person's name (e.g. if they're named Do-yun), then you will say:
+Ha ismered a személy nevét (például ha Do-yun a neve), akkor ezt mondod:
 
 ```text
 One for Do-yun, one for me.
 ```
 
-If you don't know the person's name, you will say _you_ instead.
+Ha viszont nem ismered a személy nevét, akkor helyette a _you_ szót mondod.
 
 ```text
 One for you, one for me.
 ```
 
-Here are some examples:
+Íme néhány példa:
 
-| Name   | Dialogue                    |
+| Név    | Párbeszéd                   |
 | :----- | :-------------------------- |
 | Alice  | One for Alice, one for me.  |
 | Bohdan | One for Bohdan, one for me. |
